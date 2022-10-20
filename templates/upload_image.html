@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        form {
+            display: flex;
+            height: 85vh;
+            justify-content: center;
+            align-items: center;
+            margin-top: -150px;
+            width: 60%;
+            text-align: center;
+            margin-left: 300px;
+        }
+
+        label:hover {
+            transform: scale(1.03);
+        }
+
+        .details h1 {
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgb(8, 8, 8);
+        }
+
+        .upload {
+            font-size: 20px;
+            background-color: rgb(255, 252, 252);
+            border-radius: 20px;
+            outline: none;
+            width: 500px;
+            color: rgb(0, 0, 0);
+            border: 3px solid green;
+            padding: 20px;
+        }
+
+        ::-webkit-file-upload-button {
+            color: green;
+            padding: 20px;
+            border: 2px solid green;
+            background-color: #e9e9e9;
+            border-radius: 15px;
+            margin-right: 80px;
+        }
+
+        ::-webkit-file-upload-text {
+            color: rgb(255, 252, 252);
+            padding: 20px;
+            border: 2px solid green;
+            background-color: oldlace;
+            border-radius: 15px;
+        }
+
+        ::-webkit-file-upload-button:hover {
+            border-radius: 20px;
+            border: 2px solid rgb(177, 174, 174);
+        }
+
+        input[type="submit"] {
+            position: absolute;
+            margin-top: 300px;
+            padding: 15px 35px;
+            background-color: green;
+            border-radius: 15px;
+            color: black;
+            font-size: 1.5rem;
+            border: 4px solid rgb(31, 185, 190);
+            font-family: Inter;
+            border: 3px solid green;
+            color: white;
+        }
+    </style>
+</head>
+
+<!-- {# <body background="{{url_for('static',filename = 'images/detection.jpg')}}"> #} -->
+<body background="{% static 'images/detection.jpg' %}">
+    <h1 style="text-align:center;font-size:4rem;margin-top:10%;">Predict Tomato Leaf Disease & Get Cure</h1>
+    <section>
+        {# <!-- <form action="/predict" method="post" enctype="multipart/form-data" onsubmit="showloading()"> --> #}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {# <!-- <input type="file" name="image" class="upload"> --> #}
+            {{ form }}
+            <br>
+            <br>
+            <input type="submit" value="Predict" class="button2">
+        </form>
+        </div>
+    </section>
+
+</body>
+
+</html>

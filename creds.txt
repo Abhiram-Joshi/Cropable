@@ -1,0 +1,4 @@
+weatherapi creds
+username=tanoj33123@haizail.com
+password=qwerty12345QWERTY
+apikey=d5ce87776e9a4876a8a185816221910

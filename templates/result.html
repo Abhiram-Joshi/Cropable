@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+    <title>DISEASE PREDICTION</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .border img {
+            border-radius: 15px;
+            border: 2px solid black;
+        }
+		
+    </style>
+</head>
+
+<body background="{% static 'images/prediction.webp' %}">
+
+    <div>
+        <h1 style="text-align:center;font-size:4rem;margin-top:50px;">Predict Tomato Leaf Disease & Get Cure</h1>
+    </div>
+
+   <br>
+   <br>
+
+    <div class="container my-2">
+        <div class="row mb-5">
+
+            <div class="col-sm" style="margin-bottom: 23px;">
+                <span class="border border-primary">
+                    <!-- <img src="A:\College\Software Engineering\Project\display_images\images\Tomato___Bacterial_spot.JPG" alt="User Image" style="width:500px;height:500px;"> -->
+
+                    {% if category == 0 %}
+                    <img src="{% static 'crop_images/Tomato___Bacterial_spot.jpg' %}" style="width:500px;height:500px;">
+                    
+                    {% elif category == 1 %}
+                    <img src="{% static 'crop_images/Tomato___Early_blight.jpg' %}" style="width:500px;height:500px;">
+                    
+                    {% elif category == 2 %}
+                    <img src="{% static 'crop_images/Tomato___healthy .jpg' %}" style="width:500px;height:500px;">
+
+                    {% elif category == 3 %}
+                    <img src="{% static 'crop_images/Tomato___Late_blight.jpg' %}" style="width:500px;height:500px;">
+                    
+                    {% elif category == 4 %}
+                    <img src="{% static 'crop_images/Tomato___Leaf_Mold.jpg' %}" style="width:500px;height:500px;">
+                    
+                    {% elif category == 5 %}
+                    <img src="{% static 'crop_images/Tomato___Septoria_leaf_spot.jpg' %}" style="width:500px;height:500px;">
+                    
+                    {% elif category == 6 %}
+                    <img src="{% static 'crop_images/Tomato___Spider_mites .jpg' %}" style="width:500px;height:500px;">
+                    
+                    {% elif category == 7 %}
+                    <img src="{% static 'crop_images/Tomato___Target_Spot.jpg' %}" style="width:500px;height:500px;">
+                    
+                    {% elif category == 8 %}
+                    <img src="{% static 'crop_images/Tomato___Tomato_mosaic_virus.jpg' %}" style="width:500px;height:500px;">
+                    
+                    {% elif category == 9 %}
+                    <img src="{% static 'crop_images/Tomato___Tomato_Yellow_Leaf_Curl_Virus.jpg' %}" style="width:500px;height:500px;">
+
+                    {% endif %}
+
+                </span>
+            </div>
+
+            <div class="col-sm">
+
+                <div>
+                    <h1 style="padding: 15px; background-color: rgb(15, 15, 15); color: white;"
+                        class="text-center mb-5 content-h1 rounded">
+                        {{disease}}
+                    </h1>
+                </div>
+                <div class="details" style="margin-top: 50px;">
+					
+					<h3><b> Treatment : </b> </h3>
+                    <h5 style="margin-top: 30px;">
+                        {{remedy}}
+                    </br></br>
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
