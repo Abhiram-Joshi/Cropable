@@ -18,7 +18,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 	<!-- MDB -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="icon" type="text/css" href="{% static 'images/favicon.ico' %}">
 
 	<style>
@@ -83,16 +83,14 @@
 		</nav>
 
 
-		<div class="container header">
-			<div class="row">
+		<div class="container header" style="height:900px">
+			<div class="row" >
 				<div class="col-lg-9">
 
 					<h1 style="margin-left: 30px; color:green; font-size:85px; font-family: Inter">Croppable</h1>
 					<h3 style="margin-left: 200px; color:white; font-size:56px; font-family: Inter">Crop Protection App
 					</h3>
-
 				</div>
-
 			</div>
 
 		</div>
@@ -110,7 +108,7 @@
 					uploading an image of the plant leaf. A detailed result with all
 					parameters of the plant's disease will be displayed on the website.</p>
 				<a href="{% url 'detector:add_crop_image' %}"><button type="button" class="btn btn-outline-success btn-rounded button1"
-					data-mdb-ripple-color="dark">Learn More</button></a>
+					data-mdb-ripple-color="dark">Explore</button></a>
 			</div>
 			<div class="col-lg-3 ps-5 box3 text-center">
 				<img src="{% static 'images/reminder_1.png' %}" style="padding-bottom: 20px">
@@ -119,7 +117,7 @@
 					send notification so that the farmers can provide water and fertilizers to the crops accordingly.
 				</p>
 				<button type="button" class="btn btn-outline-success btn-rounded button3"
-					data-mdb-ripple-color="dark">Learn More</button>
+					data-mdb-ripple-color="dark">Explore</button>
 			</div>
 			<div class="col-lg-3 ps-5 box1 text-center">
 				<img src="{% static 'images/weather_1.png' %}" style="padding-bottom: 20px">
@@ -129,7 +127,7 @@
 					the next few days so that the farmer can manage the water intake of crops and protect the crops
 					according to the weather.</p>
 				<button type="button" class="btn btn-outline-success btn-rounded button1"
-					data-mdb-ripple-color="dark">Learn More</button>
+					data-mdb-ripple-color="dark">Explore</button>
 			</div>
 			<div class="col-lg-3 ps-5 box2 text-center">
 				<img src="{% static 'images/soil_1.png' %}" style="padding-bottom: 20px">
@@ -137,7 +135,7 @@
 				<p style="font-size:20px;margin-top: 20px;">Using this feature the soil fertility of a certain location
 					will be displayed to suggest the farmer to add manures and pesticides to enhance the soil.</p>
 				<button type="button" class="btn btn-outline-success btn-rounded button2"
-					data-mdb-ripple-color="dark">Learn More</button>
+					data-mdb-ripple-color="dark">Explore</button>
 			</div>
 		</div>
 	</div>
