@@ -27,6 +27,7 @@ urlpatterns = [
     re_path('^admin/', admin.site.urls),
     re_path("^user/", include("account.urls")),
     re_path("^detect/", include("detector.urls")),
+    re_path("^get_info/", include("info.urls")),
 ]
 
 urlpatterns += [
