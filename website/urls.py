@@ -16,9 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import re_path, include
-from django.conf import settings
-
-import django
+# from django.conf import settings
 
 from detector.views import home
 
@@ -30,6 +28,6 @@ urlpatterns = [
     re_path("^get_info/", include("info.urls")),
 ]
 
-urlpatterns += [
-    re_path(r'^media/(?P<path>.*)$', django.views.static.serve, {
-    'document_root': settings.MEDIA_ROOT}),]
+# urlpatterns += [
+#     re_path(r'^media/(?P<path>.*)$', django.views.static.serve, {
+#     'document_root': settings.MEDIA_ROOT}),]

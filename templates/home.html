@@ -116,8 +116,7 @@
 				<p style="font-size:20px;margin-top: 20px;">We can set up customised reminders using date and time to
 					send notification so that the farmers can provide water and fertilizers to the crops accordingly.
 				</p>
-				<button type="button" class="btn btn-outline-success btn-rounded button3"
-					data-mdb-ripple-color="dark">Explore</button>
+				<a href="{% url 'info:set_reminder' %}"></a><button type="button" class="btn btn-outline-success btn-rounded button3" data-mdb-ripple-color="dark">Explore</button></a>
 			</div>
 			<div class="col-lg-3 ps-5 box1 text-center">
 				<img src="{% static 'images/weather_1.png' %}" style="padding-bottom: 20px">
@@ -126,8 +125,7 @@
 				<p style="font-size:20px;margin-top: 20px;">This feature will help us display the weather forecast for
 					the next few days so that the farmer can manage the water intake of crops and protect the crops
 					according to the weather.</p>
-				<button type="button" class="btn btn-outline-success btn-rounded button1"
-					data-mdb-ripple-color="dark">Explore</button>
+					<a href="{% url 'info:weather' %}"><button type="button" class="btn btn-outline-success btn-rounded button1"	data-mdb-ripple-color="dark">Explore</button></a>
 			</div>
 			<div class="col-lg-3 ps-5 box2 text-center">
 				<img src="{% static 'images/soil_1.png' %}" style="padding-bottom: 20px">

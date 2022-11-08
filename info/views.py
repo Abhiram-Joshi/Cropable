@@ -1,9 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+
+from .forms import ReminderForm
+from .models import ReminderModel
 
 from decouple import config
-from django.contrib.auth.decorators import login_required
-
 import requests
+from django_q.tasks import schedule
+from django_q.models import Schedule
+import datetime
+from datetime import timedelta
+import pytz
 
 # Create your views here.
 @login_required
@@ -39,3 +48,41 @@ def weatherView(request):
         })
 
     return render(request, "weather.html", context={"forecast": forecast})
+
+@login_required
+def setReminderView(request):
+    if request.method == "POST":
+        form = ReminderForm(request.POST)
+
+        if form.is_valid():
+            LOCAL_TIMEZONE = datetime.datetime.now(datetime.timezone.utc).astimezone().tzinfo
+            # print((form.cleaned_data.get("datetime").replace(tzinfo=LOCAL_TIMEZONE) - datetime.datetime.now().replace(tzinfo=LOCAL_TIMEZONE)).total_seconds()//60)
+            print(form.cleaned_data.get("datetime").tzinfo)
+
+            schedule(
+                # ReminderModel.objects.create,
+                # kwargs = {
+                #     "user": request.user,
+                #     "title": form.cleaned_data.get("title"),
+                #     "description": form.cleaned_data.get("description"),
+                #     "date": form.cleaned_data.get("datetime"),
+                # },
+                "print",
+                2,
+                schedule_type=Schedule.ONCE,
+                # next_run = form.cleaned_data.get("datetime").astimezone(pytz.utc),
+                next_run = timezone.now() + timedelta(minutes=1),
+                # minutes = int((form.cleaned_data.get("datetime").replace(tzinfo=LOCAL_TIMEZONE) - datetime.datetime.now().replace(tzinfo=LOCAL_TIMEZONE)).total_seconds()//60),
+            )
+
+            # return redirect(reverse("home"))
+        
+        else:
+            print(form.errors)
+            print(form.non_field_errors)
+            form = ReminderForm()
+    
+    else:
+        form = ReminderForm()
+
+    return render(request, "reminder.html", context = {"form": form})

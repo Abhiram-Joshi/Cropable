@@ -30,6 +30,32 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+Q_CLUSTER = {
+    'name': 'croppable',
+    'workers': 8,
+    'recycle': 500,
+    'timeout': 60,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 500,
+    'cpu_affinity': 1,
+    'label': 'Django Q',
+    'redis': {
+        'host': '127.0.0.1',
+        'port': 6379,
+        'db': 0,
+    }
+}
+# Q_CLUSTER = {
+#     'name': 'DjangORM',
+#     'workers': 4,
+#     'timeout': 90,
+#     'retry': 120,
+#     'queue_limit': 50,
+#     'bulk': 10,
+#     'orm': 'default',
+#     "has_replica": True,
+# }
 
 # Application definition
 
@@ -42,6 +68,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "account",
     "detector",
+    "info",
+    "django_q",
 ]
 
 MIDDLEWARE = [
@@ -87,6 +115,13 @@ DATABASES = {
     }
 }
 
+# Cache backend
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'croppable_cache_table',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
