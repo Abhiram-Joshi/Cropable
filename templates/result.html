@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <title>DISEASE PREDICTION</title>
 
@@ -17,20 +19,22 @@
             margin: 0px;
             padding: 0px;
             box-sizing: border-box;
+			font-family: 'Montserrat' !important;
         }
 
         .border img {
-            border-radius: 15px;
-            border: 2px solid black;
+            /* border-radius: 15px; */
+            /* border: 2px solid black; */
         }
 		
     </style>
 </head>
 
-<body background="{% static 'images/prediction.webp' %}">
+<!-- <body background="{% static 'images/prediction.webp' %}"> -->
+    <body>
 
     <div>
-        <h1 style="text-align:center;font-size:4rem;margin-top:50px;">Predict Tomato Leaf Disease & Get Cure</h1>
+        <h1 style="text-align:center;font-size:4rem;margin-top:50px;">Predict Leaf Disease & Get Cure</h1>
     </div>
 
    <br>
@@ -50,7 +54,7 @@
                     <img src="{% static 'crop_images/Tomato___Early_blight.jpg' %}" style="width:500px;height:500px;">
                     
                     {% elif category == 2 %}
-                    <img src="{% static 'crop_images/Tomato___healthy .jpg' %}" style="width:500px;height:500px;">
+                    <img src="{% static 'crop_images/Tomato___healthy.jpg' %}" style="width:500px;height:500px;">
 
                     {% elif category == 3 %}
                     <img src="{% static 'crop_images/Tomato___Late_blight.jpg' %}" style="width:500px;height:500px;">
@@ -81,7 +85,7 @@
             <div class="col-sm">
 
                 <div>
-                    <h1 style="padding: 15px; background-color: rgb(15, 15, 15); color: white;"
+                    <h1 style="padding: 15px; background-color: green; color: white;"
                         class="text-center mb-5 content-h1 rounded">
                         {{disease}}
                     </h1>
@@ -98,6 +102,17 @@
         </div>
 
     </div>
+
+	<div id="google_translate_element"></div>
+
+	<script type="text/javascript">
+	function googleTranslateElementInit() {
+	  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+	}
+	</script>
+	
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 
 </html>

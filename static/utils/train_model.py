@@ -12,10 +12,11 @@ from tensorflow.keras.layers import Flatten
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
+
+import matplotlib.pyplot as plt
+import pickle
+
 tf.compat.v1.disable_eager_execution()
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import os
 
 #basic cnn
 # Initialising the CNN
@@ -52,7 +53,22 @@ valid_set = test_datagen.flow_from_directory('./Dataset/val', target_size = (128
 labels = (training_set.class_indices)
 # print(labels)
 
-classifier.fit_generator(training_set, steps_per_epoch = 20, epochs = 50, validation_data=valid_set)
+history = classifier.fit_generator(training_set, steps_per_epoch = 20, epochs = 50, validation_data=valid_set)
+with open("blah.pickle", "wb") as file:
+    pickle.dump(history, file)
+# print("##")
+# print(history.history.keys())
+# print(f"{history.history.get('loss')=}")
+print(f"{history.history.get('accuracy')=}")
+# print(f"{history.history.get('val_loss')=}")
+print(f"{history.history.get('val_accuracy')=}")
+x = list(range(1, len(history.history.get("accuracy"))+1))
+y = list(history.history.get("loss"))
+plt.plot(x, y)
+plt.xlabel("Epoch number")
+plt.ylabel("Accuracy")
+plt.title("Epoch x Accuracy")
+plt.show()
 
 classifier_json=classifier.to_json()
 with open("model1.json", "w") as json_file:

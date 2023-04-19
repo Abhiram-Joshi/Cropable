@@ -21,6 +21,26 @@
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="icon" type="text/css" href="{% static 'images/favicon.ico' %}">
 
+	<!-- Start of ChatBot code -->
+	<script src="https://code.responsivevoice.org/responsivevoice.js?key=4ha2RLzG"></script>
+	<!-- End of ChatBot code -->
+
+	<!-- <script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
+				{ pageLanguage: 'en' },
+				'google_translate_element'
+			);
+		}
+	</script>
+
+	<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
+  cb=googleTranslateElementInit">
+</script> -->
+
+
+<script src="//code.tidio.co/w5jwnqa3q1cakbt4ynxwncibkgv9l1dx.js" async></script>
+
 	<style>
 		* {
 			font-family: 'Montserrat' !important;
@@ -36,6 +56,7 @@
 </head>
 
 <body>
+</script>
 	<div class="container-fluid header2" id="div_1">
 		<nav class="navbar navbar-expand-lg navbar-dark">
 			<a class="navbar-brand" href="#">
@@ -84,7 +105,7 @@
 
 
 		<div class="container header" style="height:900px">
-			<div class="row" >
+			<div class="row">
 				<div class="col-lg-9">
 
 					<h1 style="margin-left: 30px; color:green; font-size:85px; font-family: Inter">Croppable</h1>
@@ -107,8 +128,9 @@
 				<p style="font-size:20px;margin-top: 20px;">Through this website you can identify the disease by
 					uploading an image of the plant leaf. A detailed result with all
 					parameters of the plant's disease will be displayed on the website.</p>
-				<a href="{% url 'detector:add_crop_image' %}"><button type="button" class="btn btn-outline-success btn-rounded button1"
-					data-mdb-ripple-color="dark">Explore</button></a>
+				<a href="{% url 'detector:add_crop_image' %}"><button type="button"
+						class="btn btn-outline-success btn-rounded button1"
+						data-mdb-ripple-color="dark">Explore</button></a>
 			</div>
 			<div class="col-lg-3 ps-5 box3 text-center">
 				<img src="{% static 'images/reminder_1.png' %}" style="padding-bottom: 20px">
@@ -116,7 +138,12 @@
 				<p style="font-size:20px;margin-top: 20px;">We can set up customised reminders using date and time to
 					send notification so that the farmers can provide water and fertilizers to the crops accordingly.
 				</p>
-				<a href="{% url 'info:set_reminder' %}"></a><button type="button" class="btn btn-outline-success btn-rounded button3" data-mdb-ripple-color="dark">Explore</button></a>
+				<a href="{% url 'info:set_reminder' %}"><button type="button"
+						class="btn btn-outline-success btn-rounded button3" data-mdb-ripple-color="dark">Set
+						reminder</button></a>
+				<a href="{% url 'info:get_reminder' %}"><button type="button"
+						class="btn btn-outline-success btn-rounded button3" data-mdb-ripple-color="dark">Get
+						reminder</button></a>
 			</div>
 			<div class="col-lg-3 ps-5 box1 text-center">
 				<img src="{% static 'images/weather_1.png' %}" style="padding-bottom: 20px">
@@ -125,15 +152,18 @@
 				<p style="font-size:20px;margin-top: 20px;">This feature will help us display the weather forecast for
 					the next few days so that the farmer can manage the water intake of crops and protect the crops
 					according to the weather.</p>
-					<a href="{% url 'info:weather' %}"><button type="button" class="btn btn-outline-success btn-rounded button1"	data-mdb-ripple-color="dark">Explore</button></a>
+				<a href="{% url 'info:weather' %}"><button type="button"
+						class="btn btn-outline-success btn-rounded button1"
+						data-mdb-ripple-color="dark">Explore</button></a>
 			</div>
 			<div class="col-lg-3 ps-5 box2 text-center">
 				<img src="{% static 'images/soil_1.png' %}" style="padding-bottom: 20px">
 				<h3 style="font-size:24px; font-family: Inter; margin-top: 10px;font-weight: bold;">Soil fertility</h3>
 				<p style="font-size:20px;margin-top: 20px;">Using this feature the soil fertility of a certain location
 					will be displayed to suggest the farmer to add manures and pesticides to enhance the soil.</p>
-				<button type="button" class="btn btn-outline-success btn-rounded button2"
-					data-mdb-ripple-color="dark">Explore</button>
+				<a href="{% url 'info:soil' %}"><button type="button"
+						class="btn btn-outline-success btn-rounded button2"
+						data-mdb-ripple-color="dark">Explore</button></a>
 			</div>
 		</div>
 	</div>
@@ -253,6 +283,17 @@
 		integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
 		</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+
+	<div id="google_translate_element"></div>
+
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+		new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+		}
+	</script>
+	
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 
 </html>

@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
     <title>WEATHER PREDICTION</title>
 
@@ -21,8 +23,6 @@
             /* background-image: url("clouds.jpeg");
             background-repeat: no-repeat; */
 
-            
-
         }
 
         .border img {
@@ -32,40 +32,85 @@
         .footer{
             /* background-color: rgba(12, 193, 78, 0.326); */
             margin-top: 20px;
-            padding: 100px;
-            
+            padding: 100px;           
         }
         .container{
             z-index: -1;
         }
+
+        .weatherContent{
+            margin-left: 22%;
+        }
     </style>
 </head>
 
-<body style="background-image:url(clouds.jpeg)" >
+<body style="background-color:#FEFDF8;" >
 
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: white;   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); ">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/Asset_3_1.svg' %}" height="35px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <h3 class="topic" style="margin-left: 50px; font-family: Inter; color:green;">Croppable</h3>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav flex-row flex-wrap navbar1">
+                <li class="nav-item col-lg-auto col-12 col-md-12 How">
+                    <a class="nav-link active" aria-current="page" href="#How" style="color:black">How it works</a>
+                </li>
+                <li class="nav-item col-lg-auto col-12 col-md-12 Who">
+                    <a class="nav-link active" aria-current="page" href="#Who" style="color:black">Who we are</a>
+                </li>
+                <li class="nav-item col-lg-auto col-12 col-md-12 Contact">
+                    <a class="nav-link active" aria-current="page" href="#Contact" style="color:black">Contact Us</a>
+                </li>
 
+                {% if user.is_authenticated %}
+                <li style="margin-left: 40px;">
+                    <a href="{% url 'account:user_logout' %}"><button type="button"
+                            class="btn btn-success btn-rounded button4">Log out</button></a>
+                </li>
 
+                {% else %}
+                <li style="margin-left: 40px;">
+                    <a href="{% url 'account:user_signup' %}"> <button type="button"
+                            class="btn btn-success btn-rounded button4">Sign Up</button></a>
+                </li>
+                <li style="margin-left: 20px;">
+                    <a href="{% url 'account:user_login' %}"><button type="button"
+                            class="btn btn-outline-success btn-rounded button5" data-mdb-ripple-color="dark">Log
+                            In</button></a>
+                </li>
 
-        <h4 style=" font-weight:800;font-family:Inter; color:rgb(9, 81, 9); padding: 15px; ; text-align: center;font-size:3rem;margin-top:25px;" >WEATHER PREDICTION</h4>    
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+        <h4 style=" font-weight:800;font-family:Inter; color:green; padding: 15px; ; text-align: center;font-size:3rem;margin-top:50px;" >WEATHER PREDICTION</h4>    
 
    <br>
    <br>
 
-    <div class="container my-2">
+    <div class="container my-2 weatherContent">
 
         {% for i in forecast %}
 
         <div class="row mb-2">
 
             <div class="col-sm-6" >
+                <h5 class=""><b> Date : </b> </h5>
+                <h5 style="margin-top: 20px;">
+                    {{i.date}}
+                </br></br>
+                </h5>
 
                 <div class="details" style="margin-top: 10px;">
 					
-					<h5 class=""><b> Date : </b> </h5>
-                    <h5 style="margin-top: 20px;">
-                        {{i.date}}
-                    </br></br>
-                    </h5>
                     <h5><b> Min Temparature: </b> </h5>
                     <h5 style="margin-top: 20px;">
                         {{i.forecast.mintemp_c}}
@@ -83,7 +128,7 @@
                     </h5>
                     <h5><b> Sunrise: </b> </h5>
                     <h5 style="margin-top: 20px;">
-                        {{i.forecast.Sunrise}}
+                        {{i.forecast.sunrise}}
                     </br></br>
                     </h5>
                     
@@ -114,16 +159,27 @@
                     </h5>
                     <h5><b> Sunset: </b> </h5>
                     <h5 style="margin-top: 20px;">
-                        {{i.forecast.Sunset}}
+                        {{i.forecast.sunset}}
                     </br></br>
                     </h5>
                 </div>
             </div>
         </div>
+        <hr>
 
         {% endfor %}
 
     </div>
+
+	<div id="google_translate_element"></div>
+
+	<script type="text/javascript">
+	function googleTranslateElementInit() {
+	  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+	}
+	</script>
+	
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <!-- <div class="footer"></div> -->
 </body>

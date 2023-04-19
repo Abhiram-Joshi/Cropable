@@ -28,6 +28,7 @@ SECRET_KEY = 'swe-secret'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 Q_CLUSTER = {
@@ -70,6 +71,7 @@ INSTALLED_APPS = [
     "detector",
     "info",
     "django_q",
+    "forum",
 ]
 
 MIDDLEWARE = [

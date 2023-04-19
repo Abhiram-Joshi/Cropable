@@ -62,10 +62,15 @@ def predict(request):
     # if request.method == "POST" or request.method == "GET":
     file_name = request.GET.get("file_name")
     id = request.GET.get("id")
+    # print(file_name)
+    # print(file_name.replace("/", "\\"))
+    # print(os.path.join(settings.BASE_DIR, "display_images", file_name.replace("/", "\\")))
+
+    print("########")
     print(file_name)
-    print(file_name.replace("/", "\\"))
-    print(os.path.join(settings.BASE_DIR, "display_images", file_name.replace("/", "\\")))
     disease, remedy = pred_tomato_disease(os.path.join(settings.BASE_DIR, "media", file_name.replace("/", "\\")))
+    print(disease)
+    print(remedy)
 
     instance = Crop.objects.filter(id=id).first()
     instance.disease = disease
@@ -79,7 +84,7 @@ def predict(request):
         category = 0
     elif file_name.startswith("crop_images/Tomato___Early_blight"):
         category = 1
-    elif file_name.startswith("crop_images/Tomato___healthy "):
+    elif file_name.startswith("crop_images/Tomato___healthy"):
         category = 2
     elif file_name.startswith("crop_images/Tomato___Late_blight"):
         category = 3

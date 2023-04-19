@@ -20,7 +20,7 @@ def pred_tomato_disease(tomato_plant):
     print('@@ Raw result = ', result)
     
     pred = np.argmax(result, axis=1)
-    print(pred)
+
     if pred==0:
         return (
             "Tomato - Bacteria Spot Disease",

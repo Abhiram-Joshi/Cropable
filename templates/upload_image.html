@@ -4,22 +4,28 @@
 <html>
 
 <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <style>
+        body{
+            background-color: white;
+            overflow-x:hidden ;
+        }
         * {
             margin: 0px;
             padding: 0px;
-            box-sizing: border-box;
-        }
+            box-sizing: border-box; 
+			font-family: 'Montserrat' !important;
+		}
 
         form {
             display: flex;
-            height: 85vh;
+            /* height: 85vh; */
             justify-content: center;
             align-items: center;
-            margin-top: -150px;
-            width: 60%;
-            text-align: center;
-            margin-left: 300px;
+            margin-top: 150px;
+            /* width: 60%; */
+            text-align: center;  
         }
 
         label:hover {
@@ -79,25 +85,54 @@
             border: 3px solid green;
             color: white;
         }
+
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
     </style>
 </head>
 
 <!-- {# <body background="{{url_for('static',filename = 'images/detection.jpg')}}"> #} -->
-<body background="{% static 'images/detection.jpg' %}">
-    <h1 style="text-align:center;font-size:4rem;margin-top:10%;">Predict Tomato Leaf Disease & Get Cure</h1>
-    <section>
-        {# <!-- <form action="/predict" method="post" enctype="multipart/form-data" onsubmit="showloading()"> --> #}
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-
-            {# <!-- <input type="file" name="image" class="upload"> --> #}
-            {{ form }}
-            <br>
-            <br>
-            <input type="submit" value="Predict" class="button2">
-        </form>
+<body >
+    <div class="row">
+        
+        <div class="column">
+            <h1 style="text-align:center;font-size:4rem;margin-top:10%;">Predict Leaf Disease & Get Cure</h1>
+            <section>
+                {# <!-- <form action="/predict" method="post" enctype="multipart/form-data" onsubmit="showloading()"> --> #}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+        
+                    {# <!-- <input type="file" name="image" class="upload"> --> #}
+                    {{ form }}
+                    <br>
+                    <br>
+                    <input type="submit" value="Predict" class="button2">
+                </form>
+            </section>
+                </div>
+            <div class="column">
+                <img src="{% static 'images/predict.webp' %}" style="display:block;width:50vw; height: 100vh;" />
+            </div>
         </div>
-    </section>
+
+	<div id="google_translate_element"></div>
+
+	<script type="text/javascript">
+	function googleTranslateElementInit() {
+	  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+	}
+	</script>
+	
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 

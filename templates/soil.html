@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    
+
+    <title>WEATHER PREDICTION</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0;
+			font-family: 'Montserrat' !important;
+
+            /* background-image: url("clouds.jpeg");
+            background-repeat: no-repeat; */
+
+        }
+
+        .border img {
+            border-radius: 15px;
+            border: 2px solid black;
+        }
+        .footer{
+            /* background-color: rgba(12, 193, 78, 0.326); */
+            margin-top: 20px;
+            padding: 100px;
+            
+        }
+        .container{
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body  >
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: white;   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); ">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/Asset_3_1.svg' %}" height="35px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <h3 class="topic" style="margin-left: 50px; font-family: Inter; color:green;">Croppable</h3>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav flex-row flex-wrap navbar1">
+                <li class="nav-item col-lg-auto col-12 col-md-12 How">
+                    <a class="nav-link active" aria-current="page" href="#How" style="color:black">How it works</a>
+                </li>
+                <li class="nav-item col-lg-auto col-12 col-md-12 Who">
+                    <a class="nav-link active" aria-current="page" href="#Who" style="color:black">Who we are</a>
+                </li>
+                <li class="nav-item col-lg-auto col-12 col-md-12 Contact">
+                    <a class="nav-link active" aria-current="page" href="#Contact" style="color:black">Contact Us</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li style="margin-left: 40px;">
+                    <a href="{% url 'account:user_logout' %}"><button type="button"
+                            class="btn btn-success btn-rounded button4">Log out</button></a>
+                </li>
+
+                {% else %}
+                <li style="margin-left: 40px;">
+                    <a href="{% url 'account:user_signup' %}"> <button type="button"
+                            class="btn btn-success btn-rounded button4">Sign Up</button></a>
+                </li>
+                <li style="margin-left: 20px;">
+                    <a href="{% url 'account:user_login' %}"><button type="button"
+                            class="btn btn-outline-success btn-rounded button5" data-mdb-ripple-color="dark">Log
+                            In</button></a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+        <h4 style=" font-weight:800;font-family:Inter; color:green; padding: 15px; ; text-align: center;font-size:3rem;margin-top:50px;" >Soil Information</h4>    
+
+   <br>
+   <br>
+
+    <div class="container my-2">
+
+        <center>
+            
+            <div class="row mb-2" style="margin-left: 35%;">
+
+            <div class="col-sm-6" >
+
+                <div class="details" style="margin-top: 10px;">
+					
+					<h5 class=""><b> Surface Temperature : </b> </h5>
+                    <h5 style="margin-top: 20px;">
+                        {{soil_data.t0}}
+                    </br></br></br>
+                    </h5>
+                    <h5><b> Temperature at 10cms depth: </b> </h5>
+                    <h5 style="margin-top: 20px;">
+                        {{soil_data.t10}}
+                    </br></br></br> 
+                    </h5>
+                    <h5><b> Moisture: </b> </h5>
+                    <h5 style="margin-top: 20px;">
+                        {{soil_data.moisture}}
+                    </br></br></br>
+                    </h5>
+                    
+                </div>
+            </div>
+        </div>
+
+    </center>
+
+    </div>
+
+    <!-- <div class="footer"></div> -->
+
+	<div id="google_translate_element"></div>
+
+	<script type="text/javascript">
+	function googleTranslateElementInit() {
+	  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+	}
+	</script>
+	
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>
